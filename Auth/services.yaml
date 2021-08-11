@@ -1,0 +1,21 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  Common\Service\User\Auth\AuthExceptionManager: ~
+
+  Common\Service\User\Auth\:
+    resource: './*'
+    exclude: '**/{PhoneLockedTimeout.php}'
+
+  Common\Service\User\Auth\AttemptsCounter:
+    class: Common\Service\User\Auth\AttemptsCounter
+
+  Common\Service\User\Auth\PhoneLockedTimeoutCalculator:
+    class: Common\Service\User\Auth\PhoneLockedTimeoutCalculator
+
+  Common\Service\User\Auth\WrongAttemptsHandler:
+    class: Common\Service\User\Auth\WrongAttemptsHandler
+    public: true
